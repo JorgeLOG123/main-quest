@@ -6,44 +6,53 @@ import java.util.Scanner;
 
 public class AuthServices {
 
-    public static void Registrar(Scanner teclado, Map<String, Jugador> users) {
+    // ---------- Método auxiliar (DRY) ----------
 
 
-        System.out.println("Ingrese su nombre de usuario: ");
-        String nombre = teclado.next();
+    public static String pedirDato(Scanner teclado, String mensaje) {
+        System.out.println(mensaje);
+        return teclado.next();
+    }
+
+    // ---------- Registro ----------
+    public static void registrar(Scanner teclado, Map<String, Jugador> users) {
+
+        String nombre = pedirDato(teclado, "Ingrese su nombre de usuario: ");
+
         if (users.containsKey(nombre)) {
             System.out.println("Este usuario ya existe");
 
         } else {
-            System.out.println("Ingrese la contraseña");
-            String contraseña = teclado.next();
+            String contraseña = pedirDato(teclado, "Ingrese la contraseña:");
 
             users.put(nombre, new Jugador(nombre, contraseña));
-            System.out.println("Bienvenido! " + nombre + ", " + "Espero puedas lograr tus objetivos laborales del dia a dia:)");
-
+            System.out.println("Bienvenido! " + nombre + ", Espero puedas lograr tus objetivos laborales del dia a dia:)");
         }
-
-
     }
 
+    // ---------- Login ----------
     public static void login(Scanner teclado, Map<String, Jugador> users, List<Mision> misions) {
 
-        System.out.println("Ingrese su nombre de usuario: ");
-        String nombre = teclado.next();
+        String nombre = pedirDato(teclado, "Ingrese su nombre de usuario: ");
+
         if (!users.containsKey(nombre)) {
             System.out.println("Usuario no encontrado.");
 
         } else {
-            System.out.println("Bienvenido " + nombre + " Por favor, ingresa tu contraseña");
-            String contraseña = teclado.next();
+            String contraseña = pedirDato(teclado, "Bienvenido " + nombre + ", por favor ingresa tu contraseña:");
+
             if (users.get(nombre).getContraseña().equals(contraseña)) {
-                System.out.println("Usuario encontrado:  " + nombre);
+                System.out.println("Usuario encontrado: " + nombre);
+                // Login exitoso:
+                menuJugador(teclado, users.get(nombre), misions);
+
+            } else {
+                System.out.println("Contraseña incorrecta");
             }
         }
-
-
     }
 
+    // ---------- Menú del jugador logueado ----------
     public static void menuJugador(Scanner teclado, Jugador jugador, List<Mision> misions) {
         String opcionJugador;
         do {
@@ -77,7 +86,4 @@ public class AuthServices {
 
         } while (!opcionJugador.equals("4"));
     }
-
 }
-
-

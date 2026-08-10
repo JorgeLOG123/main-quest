@@ -28,7 +28,7 @@ public class Principal {
             opcion = teclado.next();
 
             if (opcion.equals("1")) {
-                AuthServices.Registrar(teclado, users);
+                AuthServices.registrar(teclado, users);
 
             } else if (opcion.equals("2")) {
                 AuthServices.login(teclado, users, misions);
