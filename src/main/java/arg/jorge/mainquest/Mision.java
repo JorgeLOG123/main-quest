@@ -1,6 +1,6 @@
 package arg.jorge.mainquest;
 
-public class Mision {
+public abstract class Mision {
 
     private String nombre;
     private int XP;
@@ -28,4 +28,9 @@ public class Mision {
     public void setXP(int XP) {
         this.XP = XP;
     }
+
+    public abstract int calcularXpFinal();
+
+
+
 }

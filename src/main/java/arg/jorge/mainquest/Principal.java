@@ -11,11 +11,16 @@ public class Principal {
 
         Map<String,Jugador >  users = new HashMap<>();
         List<Mision> misions = new ArrayList<Mision>();
-        misions.add(new Mision("Personalizar CV", 50));
-        misions.add(new Mision("Practicar una respuesta con metodo STAR", 30));
-        misions.add(new Mision("Hacer seguimiento de una postulacion", 20));
-        misions.add(new Mision("Actualizar perfil de Linkedin", 40));
-        misions.add(new Mision("Pedir feedback tras una entrevista", 60));
+        // Generales (XP normal)
+        misions.add(new MisionGeneral("Personalizar CV para una oferta", 50));
+        misions.add(new MisionGeneral("Practicar una respuesta STAR", 30));
+        misions.add(new MisionGeneral("Hacer seguimiento de una postulacion", 20));
+        misions.add(new MisionGeneral("Investigar una empresa antes de postular", 25));
+
+        // Semanales (dan el doble)
+        misions.add(new MisionSemanal("Postularse a 5 ofertas", 50));
+        misions.add(new MisionSemanal("Completar una entrevista", 60));
+        misions.add(new MisionSemanal("Terminar un curso corto", 70));
         String opcion;
 
         do {

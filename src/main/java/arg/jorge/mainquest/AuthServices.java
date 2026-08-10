@@ -62,7 +62,7 @@ public class AuthServices {
             } else if (opcionJugador.equals("2")) {
                 System.out.println("Estas son las misiones disponibles:");
                 for (Mision m : misions) {
-                    System.out.println(m.getNombre() + " - XP: " + m.getXP());
+                    System.out.println(m.getNombre() + " - XP: " + m.calcularXpFinal());
                 }
 
             } else if (opcionJugador.equals("3")) {
