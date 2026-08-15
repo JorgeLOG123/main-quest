@@ -7,14 +7,24 @@ import java.util.Scanner;
 public class AuthServices {
 
     // ---------- Método auxiliar (DRY) ----------
-
-
+    /**
+     * Muestra un mensaje y devuelve lo que el usuario escribe por teclado.
+     * Agrupa el patrón repetido de println + teclado.next().
+     * @param teclado scanner para leer datos del usuario
+     * @param mensaje texto a mostrar antes de leer
+     * @return el dato ingresado por el usuario
+     */
     public static String pedirDato(Scanner teclado, String mensaje) {
         System.out.println(mensaje);
         return teclado.next();
     }
 
     // ---------- Registro ----------
+    /**
+     * Registra un nuevo jugador si el nombre no existe.
+     * @param teclado scanner para leer datos del usuario
+     * @param users mapa de jugadores registrados
+     */
     public static void registrar(Scanner teclado, Map<String, Jugador> users) {
 
         String nombre = pedirDato(teclado, "Ingrese su nombre de usuario: ");
@@ -23,9 +33,10 @@ public class AuthServices {
             System.out.println("Este usuario ya existe");
 
         } else {
-            String contraseña = pedirDato(teclado, "Ingrese la contraseña:");
+            String correo = pedirDato(teclado, "Ingrese su correo electronico: ");
+            String contraseña = pedirDato(teclado, "Ingrese la contraseña: ");
 
-            users.put(nombre, new Jugador(nombre, contraseña));
+            users.put(nombre, new Jugador(nombre, contraseña, correo));
             System.out.println("Bienvenido! " + nombre + ", Espero puedas lograr tus objetivos laborales del dia a dia:)");
         }
     }
@@ -43,7 +54,7 @@ public class AuthServices {
 
             if (users.get(nombre).getContraseña().equals(contraseña)) {
                 System.out.println("Usuario encontrado: " + nombre);
-                // Login exitoso:
+                // Login exitoso: entra al menú del jugador
                 menuJugador(teclado, users.get(nombre), misions);
 
             } else {

@@ -4,15 +4,17 @@ public class Jugador {
 
     private String nombre;
     private String contraseña;
+    private String email;
+
     private int XP;
     public static final int XP_POR_NIVEL = 100;
 
-    public Jugador(String nombre, String contraseña) {
+    public Jugador(String nombre, String contraseña, String email) {
 
         this.nombre = nombre;
         this.contraseña = contraseña;
         this.XP = 0;
-
+        this.email = email;
     }
 
     public int getXP() {
@@ -43,6 +45,15 @@ public class Jugador {
         this.XP += cantidad;
     }
 
+    public String getCorreo() {
+        return email;
+    }
+
+
+    /**
+     * Calcula el nivel actual del jugador según su XP acumulada.
+     * @return el nivel del jugador (arranca en 1)
+     */
      public int calcularNivel() {
         int nivelTotal = this.XP / XP_POR_NIVEL + 1;
         return nivelTotal;

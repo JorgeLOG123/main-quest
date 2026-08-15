@@ -29,6 +29,11 @@ public abstract class Mision {
         this.XP = XP;
     }
 
+    /**
+     * Calcula la XP final que otorga la misión.
+     * Cada tipo de misión lo implementa a su manera.
+     * @return la XP final de la misión
+     */
     public abstract int calcularXpFinal();
 
 
