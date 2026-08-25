@@ -1,6 +1,13 @@
 package arg.jorge.mainquest;
 
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("GENERAL")
 public class MisionGeneral extends Mision {
+    // Solo para hibernate
+    protected MisionGeneral() { }
 
     public MisionGeneral(String nombre, int XP){
         super(nombre, XP);

@@ -52,7 +52,7 @@ public class AuthServices {
         } else {
             String contraseña = pedirDato(teclado, "Bienvenido " + nombre + ", por favor ingresa tu contraseña:");
 
-            if (users.get(nombre).getContraseña().equals(contraseña)) {
+            if (users.get(nombre).getContrasena().equals(contraseña)) {
                 System.out.println("Usuario encontrado: " + nombre);
                 // Login exitoso: entra al menú del jugador
                 menuJugador(teclado, users.get(nombre), misions);
@@ -75,7 +75,7 @@ public class AuthServices {
                 System.out.println("Mostrando datos del usuario...");
                 System.out.println(
                         "Nombre: " + jugador.getNombre() +
-                                " | Experiencia: " + jugador.getXP() +
+                                " | Experiencia: " + jugador.getXp() +
                                 " | Nivel: " + jugador.calcularNivel()
                 );
 

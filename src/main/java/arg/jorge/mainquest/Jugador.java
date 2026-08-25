@@ -1,28 +1,48 @@
 package arg.jorge.mainquest;
 
-public class Jugador {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "JUGADORES")
+public class Jugador extends Persistible {
+
+    @Column(name = "nombre")
     private String nombre;
-    private String contraseña;
+
+    @Column(name = "contrasena")
+    private String contrasena;
+
+    @Column(name = "email")
     private String email;
 
-    private int XP;
+    @Column(name = "XP")
+    private Long xp;
+
     public static final int XP_POR_NIVEL = 100;
 
-    public Jugador(String nombre, String contraseña, String email) {
+    // Solo para hibernate
+    protected Jugador() { }
 
+    public Jugador(String nombre, String contrasena, String email) {
         this.nombre = nombre;
-        this.contraseña = contraseña;
-        this.XP = 0;
+        this.contrasena = contrasena;
+        this.xp = 0L;
         this.email = email;
     }
 
-    public int getXP() {
-        return XP;
+
+
+    public Long getXp() {
+        return xp;
     }
 
-    public void setXP(int XP) {
-        this.XP = XP;
+
+
+
+    public void setXp(Long xp) {
+        this.xp = xp;
     }
 
     public String getNombre() {
@@ -33,33 +53,27 @@ public class Jugador {
         this.nombre = nombre;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
-    public void sumarXP(int cantidad) {
-        this.XP += cantidad;
-    }
-
-    public String getCorreo() {
+    public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    /**
-     * Calcula el nivel actual del jugador según su XP acumulada.
-     * @return el nivel del jugador (arranca en 1)
-     */
-     public int calcularNivel() {
-        int nivelTotal = this.XP / XP_POR_NIVEL + 1;
-        return nivelTotal;
+    public void sumarXP(long cantidad) {
+        this.xp += cantidad;
+    }
 
-     }
-
-
-
+    public int calcularNivel() {
+        return (int) (this.xp / XP_POR_NIVEL) + 1;
+    }
 }

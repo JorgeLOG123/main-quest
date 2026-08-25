@@ -1,9 +1,20 @@
 package arg.jorge.mainquest;
 
-public abstract class Mision {
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "MISIONES")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TIPO")
+public abstract class Mision extends Persistible {
+
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "XP")
     private int XP;
+    // Solo para hibernate
+    protected Mision() { }
 
     public Mision(String nombre, int XP){
 
