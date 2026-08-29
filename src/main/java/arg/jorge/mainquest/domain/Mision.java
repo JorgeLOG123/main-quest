@@ -1,4 +1,4 @@
-package arg.jorge.mainquest;
+package arg.jorge.mainquest.domain;
 
 import jakarta.persistence.*;
 

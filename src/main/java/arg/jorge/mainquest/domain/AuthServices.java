@@ -1,4 +1,4 @@
-package arg.jorge.mainquest;
+package arg.jorge.mainquest.domain;
 
 import java.util.List;
 import java.util.Map;

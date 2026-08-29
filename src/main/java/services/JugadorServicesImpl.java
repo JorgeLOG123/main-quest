@@ -1,9 +1,11 @@
 package services;
 
-import arg.jorge.mainquest.Jugador;
+import arg.jorge.mainquest.domain.Jugador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.JugadorRepository;
+
+import java.util.List;
 
 @Service
 public class JugadorServicesImpl implements JugadorServices {
@@ -13,6 +15,17 @@ public class JugadorServicesImpl implements JugadorServices {
 
     @Override
     public void Guardar(Jugador jugador) {
-        this.repositorio.save(jugador);
+
+        List<Jugador> jugadores =  this.repositorio.findByName(jugador.getNombre());
+
+        if(jugadores.isEmpty()){
+            this.repositorio.save(jugador);
+        }
+
+
+
     }
+
+
+
 }
