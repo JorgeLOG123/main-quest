@@ -1,8 +1,8 @@
 package arg.jorge.mainquest.domain;
 import  arg.jorge.mainquest.domain.Jugador;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class JugadorEntityTest {
@@ -19,4 +19,19 @@ public class JugadorEntityTest {
 
 
     }
+    @Test
+    public void testCrearJugadorConEmailNuloLanzaExcepcion() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Jugador("Jorge", "pass1234", null);
+        });
+    }
+
+
+    @Test
+    public void testCrearJugadorConEmailVacioLanzaExcepcion() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Jugador("Jorge", "pass1234", "   ");
+        });
+    }
+
 }
