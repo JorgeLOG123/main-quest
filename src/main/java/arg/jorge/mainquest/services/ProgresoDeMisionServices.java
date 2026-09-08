@@ -20,6 +20,8 @@ public interface ProgresoDeMisionServices {
     List<ProgresoDeMision> listarTodos();
 
     void eliminar(Long id);
+
+
 }
 
 

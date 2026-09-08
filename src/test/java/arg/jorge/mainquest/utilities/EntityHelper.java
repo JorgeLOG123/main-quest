@@ -1,7 +1,9 @@
 package arg.jorge.mainquest.utilities;
 
 import arg.jorge.mainquest.domain.Jugador;
-import arg.jorge.mainquest.domain.Persistible;
+import arg.jorge.mainquest.domain.Mision;
+import arg.jorge.mainquest.domain.MisionGeneral;
+import arg.jorge.mainquest.domain.ProgresoDeMision;
 
 import java.util.Random;
 
@@ -20,4 +22,11 @@ public class EntityHelper {
         return  EMAIL_PREFIX + random.nextInt() + "@Dummy.com.ar";
     }
 
+    public static Mision crearMisionValida(){
+        return new MisionGeneral("Derrotar al jefe final", 100);
+    }
+
+    public static ProgresoDeMision crearProgresoValido(){
+        return new ProgresoDeMision(crearJugadorValido(), crearMisionValida());
+    }
 }
