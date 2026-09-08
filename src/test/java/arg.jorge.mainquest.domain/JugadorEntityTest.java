@@ -1,6 +1,7 @@
 package arg.jorge.mainquest.domain;
 import  arg.jorge.mainquest.domain.Jugador;
 import org.junit.jupiter.api.Test;
+import arg.jorge.mainquest.utilities.EntityHelper;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,16 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class JugadorEntityTest {
 
     @Test
-    public void testCrearJugadorExitosamente(){
+    public void testCrearJugadorExitosamente() {
+        Jugador jugador = EntityHelper.crearJugadorValido();
 
-
-        Jugador jugador  = new Jugador("Jorge","2509032","Ordonezguevara@gmail.com");
-
-        assertEquals("Ordonezguevara@gmail.com", jugador.getEmail());
+        assertEquals(EntityHelper.VALID_EMAIL, jugador.getEmail());
         assertNotNull(jugador.getNombre());
         assertNotNull(jugador.getContrasena());
-
-
     }
     @Test
     public void testCrearJugadorConEmailNuloLanzaExcepcion() {

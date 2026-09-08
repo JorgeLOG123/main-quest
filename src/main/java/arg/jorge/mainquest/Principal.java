@@ -1,4 +1,4 @@
-package arg.jorge.mainquest.main;
+package arg.jorge.mainquest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

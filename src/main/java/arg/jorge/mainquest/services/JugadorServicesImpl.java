@@ -1,9 +1,9 @@
-package services;
+package arg.jorge.mainquest.services;
 
 import arg.jorge.mainquest.domain.Jugador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.JugadorRepository;
+import arg.jorge.mainquest.repositories.JugadorRepository;
 
 import java.util.List;
 
@@ -42,7 +42,7 @@ public class JugadorServicesImpl implements JugadorServices {
     }
 
     @Override
-    public List<Jugador> listarTodos() {
+    public List<Jugador> listartodos() {
             return this.repositorio.findAll();
 
     }

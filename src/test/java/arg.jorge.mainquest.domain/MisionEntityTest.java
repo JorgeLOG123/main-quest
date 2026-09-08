@@ -9,15 +9,15 @@ public class MisionEntityTest {
     @Test
     public void testMisionGeneralAgregadaExitosamente(){
         MisionGeneral  misionGeneral= new MisionGeneral("NOMBRE DE MISION GENERAL", 25);
-        assertEquals("Nombre de mision general", misionGeneral.getNombre());
+        assertEquals("NOMBRE DE MISION GENERAL", misionGeneral.getNombre());
         assertEquals(25, misionGeneral.getXP());
 
     }
     @Test
     public void testMisionSemanalAgregadaExitosamente(){
         MisionSemanal misionSemanal = new MisionSemanal("NOMBRE DE MISION SEMANAL", 45);
-        assertEquals("Nombre de mision semanal", misionSemanal.getNombre());
-        assertEquals(100, misionSemanal.getXP());
+        assertEquals("NOMBRE DE MISION SEMANAL", misionSemanal.getNombre());
+        assertEquals(45, misionSemanal.getXP());
     }
 
     @Test

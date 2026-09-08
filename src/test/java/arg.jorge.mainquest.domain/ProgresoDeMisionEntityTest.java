@@ -1,6 +1,6 @@
 package arg.jorge.mainquest.domain;
 
-import Enums.EstadoMision;
+import arg.jorge.mainquest.Enums.EstadoMision;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

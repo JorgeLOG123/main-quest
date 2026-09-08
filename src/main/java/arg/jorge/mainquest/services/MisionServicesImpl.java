@@ -1,9 +1,9 @@
-package services;
+package arg.jorge.mainquest.services;
 
 import arg.jorge.mainquest.domain.Mision;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.MisionRepository;
+import arg.jorge.mainquest.repositories.MisionRepository;
 
 import java.util.List;
 

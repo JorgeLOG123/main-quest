@@ -1,11 +1,11 @@
-package services;
+package arg.jorge.mainquest.services;
 
 import arg.jorge.mainquest.domain.Jugador;
 import arg.jorge.mainquest.domain.Mision;
 import arg.jorge.mainquest.domain.ProgresoDeMision;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.ProgresoDeMisionRepository;
+import arg.jorge.mainquest.repositories.ProgresoDeMisionRepository;
 
 import java.util.List;
 

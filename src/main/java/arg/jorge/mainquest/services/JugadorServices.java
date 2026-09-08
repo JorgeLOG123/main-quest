@@ -1,4 +1,4 @@
-package services;
+package arg.jorge.mainquest.services;
 
 import arg.jorge.mainquest.domain.Jugador;
 import arg.jorge.mainquest.domain.Mision;
@@ -15,7 +15,7 @@ public interface JugadorServices {
 
     Jugador buscarPorId(Long id);               // Buscar uno
 
-    List<Jugador> listarTodos();
+    List<Jugador> listartodos();
 
 
 

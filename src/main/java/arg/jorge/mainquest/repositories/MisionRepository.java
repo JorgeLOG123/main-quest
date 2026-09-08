@@ -1,4 +1,4 @@
-package repositories;
+package arg.jorge.mainquest.repositories;
 
 import arg.jorge.mainquest.domain.Jugador;
 import arg.jorge.mainquest.domain.Mision;

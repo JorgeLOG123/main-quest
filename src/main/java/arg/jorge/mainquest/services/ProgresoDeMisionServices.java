@@ -1,5 +1,5 @@
 
-package services;
+package arg.jorge.mainquest.services;
 
 import arg.jorge.mainquest.domain.Jugador;
 import arg.jorge.mainquest.domain.Mision;
