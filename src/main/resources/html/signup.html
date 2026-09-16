@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{html.layouts/default}">
+<head>
+    <title th:text="#{signup.title}">Main Quest — Registro</title>
+</head>
+<body>
+
+    <div layout:fragment="page-content">
+        <section class="py-5">
+            <div class="container max-w-md mx-auto" style="max-width: 500px;">
+                <div class="player-card">
+                    <h2 class="h3 font-heading text-warning mb-3 text-center" th:text="#{signup.form.title}">Crear Nuevo Jugador</h2>
+                    <p class="text-muted small text-center mb-4" th:text="#{signup.form.subtitle}">Comienza tu aventura laboral registrando tu perfil.</p>
+
+                    <form th:action="@{/registro}" method="post">
+                        <div class="mb-3">
+                            <label class="form-label text-muted small" th:text="#{common.label.playerName}">Nombre de Jugador</label>
+                            <input type="text" name="nombre" class="form-control bg-secondary bg-opacity-20 border-secondary text-light" placeholder="Ej: Jorge Dev" th:placeholder="#{common.placeholder.name}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted small" th:text="#{common.label.email}">Correo Electrónico</label>
+                            <input type="email" name="email" class="form-control bg-secondary bg-opacity-20 border-secondary text-light" placeholder="jorge@email.com" th:placeholder="#{common.placeholder.email}" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label text-muted small" th:text="#{common.label.password}">Contraseña</label>
+                            <input type="password" name="contrasena" class="form-control bg-secondary bg-opacity-20 border-secondary text-light" minlength="5" placeholder="••••••••" th:placeholder="#{common.placeholder.password}" required>
+                        </div>
+                        <button type="submit" class="btn-mq-primary w-100 justify-content-center" th:text="#{signup.form.btn.submit}">Registrar mi Partida</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
