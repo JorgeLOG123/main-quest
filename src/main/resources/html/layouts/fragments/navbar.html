@@ -6,14 +6,19 @@
         </a>
 
         <div class="d-flex align-items-center gap-3 ms-auto">
+            <!-- Status badge -->
             <span class="status-badge d-none d-md-inline-flex">
                 <span class="status-dot"></span>
                 <span th:text="#{navbar.status.connected}">Spring Boot :8080 Conectado</span>
             </span>
 
-            <button class="btn btn-mq-primary btn-sm px-3" data-bs-toggle="modal" data-bs-target="#modalJugador">
-                <i class="fa-solid fa-user-plus"></i> <span th:text="#{navbar.btn.player}">Jugador</span>
-            </button>
+            <!-- Links de navegación para visitantes (sin login) -->
+            <a class="btn btn-outline-light btn-sm" th:href="@{/login}" th:text="#{navbar.btn.login}">
+                Ingresar
+            </a>
+            <a class="btn btn-mq-primary btn-sm px-3" th:href="@{/registro}" th:text="#{navbar.btn.register}">
+                <i class="fa-solid fa-user-plus"></i> Registrarse
+            </a>
         </div>
     </div>
 </nav>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<head>
+    <title th:text="#{login.title}">Main Quest — Iniciar Sesión</title>
+</head>
+<body>
+
+    <div layout:fragment="page-content">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <form th:action="@{/login}" method="post">
+
+                    <div class="mb-3">
+                        <label class="form-label text-muted small" th:text="#{common.label.email}">Correo Electrónico</label>
+                        <input type="email" name="email" class="form-control bg-secondary bg-opacity-20 border-secondary text-light" placeholder="jorge@email.com" th:placeholder="#{common.placeholder.email}" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label text-muted small" th:text="#{common.label.password}">Contraseña</label>
+                        <input type="password" name="contrasena" class="form-control bg-secondary bg-opacity-20 border-secondary text-light" minlength="5" placeholder="••••••••" th:placeholder="#{common.placeholder.password}" required>
+                    </div>
+
+                    <button type="submit" class="btn-mq-primary w-100 justify-content-center" th:text="#{login.form.btn.submit}">Iniciar Sesión</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
