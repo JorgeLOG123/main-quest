@@ -1,6 +1,7 @@
 package arg.jorge.mainquest.services;
 
 import arg.jorge.mainquest.domain.Jugador;
+import arg.jorge.mainquest.exceptions.MultipleJugadoresFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import arg.jorge.mainquest.repositories.JugadorRepository;
@@ -46,9 +47,30 @@ public class JugadorServicesImpl implements JugadorServices {
             return this.repositorio.findAll();
 
     }
+    @Override
+    public void registrar(String nombre, String contrasena, String email){
+        Jugador jugador = new Jugador(nombre, contrasena,email);
 
+        this.guardar(jugador);
+    }
 
+    @Override
+    public Jugador obtenerPorEmail(String email) {
+        List<Jugador> jugadores = this.repositorio.findByEmail(email);
 
+        Jugador encontrado = null;
+        if (jugadores != null && !jugadores.isEmpty()) {
+            if (jugadores.size() == 1) {
+                encontrado = jugadores.get(0);
+            } else {
+                throw new MultipleJugadoresFoundException(email);   // con throw
+            }
+        }
+        return encontrado;
+    }
 
-
+    @Override
+    public boolean existePorNombre(String nombre) {
+        return !this.repositorio.findByNombre(nombre).isEmpty();
+    }
 }

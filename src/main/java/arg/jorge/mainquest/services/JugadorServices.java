@@ -17,8 +17,10 @@ public interface JugadorServices {
 
     List<Jugador> listartodos();
 
+    public void registrar(String nombre, String contrasena, String email);
 
+    Jugador obtenerPorEmail(String email);
 
-
+    boolean existePorNombre(String nombre);
 
 }

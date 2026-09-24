@@ -8,6 +8,7 @@ import jakarta.persistence.Table;
 @Table(name = "JUGADORES")
 public class Jugador extends Persistible {
     public static final String ERR_EMAIL_OBLIGATORIO = "El email es obligatorio";
+    public static final int CONTRASENA_MIN_LENGTH = 5;
 
     @Column(name = "nombre")
     private String nombre;

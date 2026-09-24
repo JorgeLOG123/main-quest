@@ -1,13 +1,11 @@
 CREATE TABLE JUGADORES(
-
-    ID int not null AUTO_INCREMENT,
-    nombre varchar(50) not null,
-    contrasena varchar(60) not null unique ,
-    email varchar(255) not null unique ,
-    XP bigint not null ,
-    PRIMARY KEY (ID)
+                          ID int not null AUTO_INCREMENT,
+                          nombre varchar(50) not null unique,
+                          contrasena varchar(60) not null,
+                          email varchar(255) not null unique,
+                          XP bigint not null default 0,
+                          PRIMARY KEY (ID)
 );
-
 
 CREATE TABLE MISIONES(
     ID int not null AUTO_INCREMENT,
