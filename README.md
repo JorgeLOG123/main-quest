@@ -15,6 +15,7 @@ Este repositorio está organizado en ramas que documentan la evolución del proy
 | `master` | Versión estable |
 | `aplicando-solid` | Refactor aplicando principios SOLID |
 | `aplicando-lo-visto-semana-5` | Migración a Spring Boot y persistencia con JPA |
+| `semana-7-excepciones-testing` | Manejo de excepciones y tests unitarios y de integración |
 | `semana-8-FrontEnd` | Interfaz web con Spring MVC, Thymeleaf y validaciones del servidor |
 
 Para ver el proyecto en un punto específico de su desarrollo, basta con cambiar de rama:
