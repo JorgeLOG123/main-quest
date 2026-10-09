@@ -1,0 +1,39 @@
+package arg.jorge.mainquest.services;
+
+import arg.jorge.mainquest.domain.Jugador;
+import arg.jorge.mainquest.domain.Mision;
+import arg.jorge.mainquest.forms.DeletionForm;
+import arg.jorge.mainquest.forms.JugadorAdminForm;
+
+import java.util.List;
+
+public interface JugadorServices {
+
+    public void guardar(Jugador jugador);
+
+    Jugador modificar(Jugador jugador);         // Modificación
+
+    void eliminar(Long id);                     // Baja
+
+    Jugador buscarPorId(Long id);               // Buscar uno
+
+    List<Jugador> listartodos();
+
+    public void registrar(String nombre, String contrasena, String email);
+
+    Jugador obtenerPorEmail(String email);
+
+    boolean existePorNombre(String nombre);
+
+    public JugadorAdminForm prepareEntity(Long id);
+
+    Jugador obtenerPorEmail(String email, Long id);
+
+    boolean existePorNombre(String nombre, Long id);
+
+    void eliminar(DeletionForm form);
+
+
+    void actualizar(JugadorAdminForm form);
+}
+
