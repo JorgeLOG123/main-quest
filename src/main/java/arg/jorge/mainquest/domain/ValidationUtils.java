@@ -10,4 +10,9 @@ public class ValidationUtils {
         return numero < 0;
     }
 
+    public static boolean isValidID(Long id){
+        return id != null && id.longValue() > 0;
+    }
+
+
 }

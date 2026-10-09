@@ -52,5 +52,13 @@ public class RegistracionFormValidator implements Validator {
                     new Integer[] { Jugador.CONTRASENA_MIN_LENGTH }, null);
         }
     }
+    public int getEmailMaxlength(){
+        return Jugador.EMAIL_MAXLEGTH;
+    }
+    public int getNombreMaxLength()
+    { return Jugador.NOMBRE_MAX_LENGTH; }
+
+    public int getContrasenaMinLength()
+    { return Jugador.CONTRASENA_MIN_LENGTH; }
 }
 

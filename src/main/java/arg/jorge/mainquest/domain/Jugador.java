@@ -1,14 +1,16 @@
 package arg.jorge.mainquest.domain;
-import arg.jorge.mainquest.domain.ValidationUtils;
+import arg.jorge.mainquest.domain.interfaces.Editable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-
+import arg.jorge.mainquest.forms.JugadorAdminForm;
 @Entity
 @Table(name = "JUGADORES")
-public class Jugador extends Persistible {
+public class Jugador extends Persistible implements Editable<JugadorAdminForm> {
     public static final String ERR_EMAIL_OBLIGATORIO = "El email es obligatorio";
     public static final int CONTRASENA_MIN_LENGTH = 5;
+    public static final int EMAIL_MAXLEGTH = 255;
+    public static final int NOMBRE_MAX_LENGTH = 50;
 
     @Column(name = "nombre")
     private String nombre;
@@ -36,12 +38,25 @@ public class Jugador extends Persistible {
     }
 
 
-
     public Long getXp() {
         return xp;
     }
 
+    public void copyPropertiesToForm(JugadorAdminForm form) {
+        form.setId(getId());
+        form.setNombre(getNombre());
+        form.setEmail(getEmail());
+    }
 
+    @Override
+    public void updatePropertiesFromForm(JugadorAdminForm form) {
+        setNombre(form.getNombre());
+        setEmail(form.getEmail());
+
+        if (form.getContrasena() != null && !form.getContrasena().isBlank()) {
+            setContrasena(form.getContrasena());
+        }
+    }
 
 
     public void setXp(long xp) {
@@ -101,7 +116,12 @@ public class Jugador extends Persistible {
         this.xp += cantidad;
     }
 
+
+
     public int calcularNivel() {
         return (int) (this.xp / XP_POR_NIVEL) + 1;
     }
+
+
+
 }

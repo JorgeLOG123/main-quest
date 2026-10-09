@@ -1,6 +1,6 @@
 <nav id="nav" th:fragment="nav" xmlns:th="http://www.thymeleaf.org" class="navbar navbar-expand-lg mq-navbar py-3">
     <div class="container">
-        <a class="mq-brand" href="/">
+        <a class="mq-brand" th:href="@{/}">
             <div class="mq-brand-icon">MQ</div>
             <span class="mq-brand-text" th:text="#{navbar.brand}">Main Quest</span>
         </a>
@@ -12,12 +12,22 @@
                 <span th:text="#{navbar.status.connected}">Spring Boot :8080 Conectado</span>
             </span>
 
+            <!-- Jugar (lleva al GameController, que decide si deja pasar o manda al login) -->
+            <a class="btn btn-mq-primary btn-sm px-3" th:href="@{/game}">
+                <i class="fa-solid fa-play"></i> <span th:text="#{navbar.btn.play}">Jugar</span>
+            </a>
+
+            <!-- Administración -->
+            <a class="btn btn-outline-light btn-sm" th:href="@{/admin/user/list}" th:text="#{navbar.admin}">
+                Administración
+            </a>
+
             <!-- Links de navegación para visitantes (sin login) -->
             <a class="btn btn-outline-light btn-sm" th:href="@{/login}" th:text="#{navbar.btn.login}">
                 Ingresar
             </a>
-            <a class="btn btn-mq-primary btn-sm px-3" th:href="@{/registro}" th:text="#{navbar.btn.register}">
-                <i class="fa-solid fa-user-plus"></i> Registrarse
+            <a class="btn btn-mq-primary btn-sm px-3" th:href="@{/registro}">
+                <i class="fa-solid fa-user-plus"></i> <span th:text="#{navbar.btn.register}">Registrarse</span>
             </a>
         </div>
     </div>

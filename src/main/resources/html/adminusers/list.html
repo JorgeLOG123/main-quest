@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<head>
+    <title th:text="#{admin.users.title}">Main Quest — Administración</title>
+</head>
+<body>
+
+<div layout:fragment="page-content">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-light" th:text="#{admin.users.section.title}">Jugadores registrados</h2>
+        <a th:href="@{/admin/user/edit}" class="btn-mq-primary btn-sm" th:text="#{nuevo.jugador.btn}">Nuevo jugador</a>
+    </div>
+
+    <div class="glass-card p-0 overflow-hidden">
+        <table class="table table-borderless table-hover table-dark mb-0">
+            <thead>
+            <tr>
+                <th th:text="#{col.id}">ID</th>
+                <th th:text="#{col.username}">Jugador</th>
+                <th th:text="#{col.email}">Email</th>
+                <th th:text="#{col.xp}">XP</th>
+                <th style="text-align: right;" th:text="#{col.actions}">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="jugador : ${listado}">
+                <td th:text="${jugador.id}"></td>
+                <td th:text="${jugador.nombre}"></td>
+                <td th:text="${jugador.email}"></td>
+                <td th:text="${jugador.xp}"></td>
+                <td style="text-align: right;">
+                    <a th:href="@{/admin/user/edit(id=${jugador.id})}" class="btn btn-sm btn-outline-light" th:text="#{editar.btn}">Editar</a>
+                    <button type="button" class="btn btn-sm btn-danger"
+                            th:id="${'btnDelete-' + jugador.id}"
+                            onclick="confirmarEliminacion(this)"
+                            th:attr="data-id=${jugador.id}, data-nombre=${jugador.nombre}"
+                            data-bs-toggle="modal" data-bs-target="#deletionModal"
+                            th:text="#{eliminar.btn}">Eliminar</button>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(listado)}">
+                <td colspan="5" class="text-center text-light" th:text="#{sin.jugadores}">Todavía no hay jugadores registrados</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="deletionModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <form id="deletionFrm" th:action="@{/admin/user/delete}" method="post">
+
+                    <div class="modal-header border-secondary">
+                        <h5 class="modal-title" th:text="#{delete.section.title}">Eliminar jugador</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <input id="id" name="id" type="hidden" value="" />
+                        <p>
+                            <span th:text="#{delete.confirm.message}">¿Seguro que querés eliminar a</span>
+                            <strong id="deletionModal-nombre"></strong>?
+                        </p>
+                        <small class="text-danger" th:text="#{delete.warning}">Esta acción no se puede deshacer.</small>
+                    </div>
+
+                    <div class="modal-footer border-secondary">
+                        <button type="submit" class="btn btn-danger" th:text="#{delete.btn}">Eliminar</button>
+                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal" th:text="#{close.btn}">Cancelar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <th:block layout:fragment="page-script">
+        <script type="text/javascript">
+            function confirmarEliminacion(btn) {
+                const id = btn.dataset.id;
+                const nombre = btn.dataset.nombre;
+
+                document.getElementById('id').value = id;
+                document.getElementById('deletionModal-nombre').textContent = nombre;
+            }
+        </script>
+    </th:block>
+
+</div>
+
+</body>
+</html>

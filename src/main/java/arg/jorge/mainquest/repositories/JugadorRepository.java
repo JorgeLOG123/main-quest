@@ -11,6 +11,7 @@ public interface JugadorRepository extends JpaRepository<Jugador, Long> {
 
     List<Jugador> findByNombre(String nombre);
     List<Jugador> findByEmail(String email);
-
+    List<Jugador> findByEmailAndIdNot(String email, Long id);
+    List<Jugador> findByNombreAndIdNot(String nombre, Long id);
 
 }
